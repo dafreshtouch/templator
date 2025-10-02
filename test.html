@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Test Adobe Template Generator</title>
+</head>
+<body>
+    <h1>Test de l'application</h1>
+    <div id="test-output"></div>
+    
+    <script src="templates-data.js"></script>
+    <script>
+        // Test simple pour vérifier si les scripts se chargent
+        document.addEventListener('DOMContentLoaded', function() {
+            const output = document.getElementById('test-output');
+            
+            try {
+                // Test des données
+                if (typeof TEMPLATES_DATA !== 'undefined') {
+                    output.innerHTML += '<p>✅ templates-data.js chargé correctement</p>';
+                } else {
+                    output.innerHTML += '<p>❌ templates-data.js non chargé</p>';
+                }
+                
+                // Test des fonctions
+                if (typeof getTemplatesByCategory === 'function') {
+                    const socialTemplates = getTemplatesByCategory('social');
+                    output.innerHTML += `<p>✅ ${socialTemplates.length} templates sociaux trouvés</p>`;
+                } else {
+                    output.innerHTML += '<p>❌ Fonction getTemplatesByCategory non trouvée</p>';
+                }
+                
+            } catch (error) {
+                output.innerHTML += `<p>❌ Erreur: ${error.message}</p>`;
+            }
+        });
+    </script>
+</body>
+</html>
