@@ -1,0 +1,15 @@
+title: Templator - Adobe Template Generator
+description: Générateur professionnel de templates Adobe avec 100+ formats
+url: https://dafreshtouch.github.io
+baseurl: /templator
+
+# GitHub Pages settings
+plugins:
+  - jekyll-sitemap
+  - jekyll-feed
+
+# Exclude files
+exclude:
+  - README.md
+  - .gitignore
+  - test.html
