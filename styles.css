@@ -34,11 +34,38 @@ body {
 }
 
 .header p {
-    font-size: 0.95rem;
+    font-size: 1rem;
     color: #666666;
     font-weight: 400;
     max-width: 600px;
     margin: 0 auto;
+}
+
+.app-download-banner {
+    margin-top: 15px;
+    padding: 12px 20px;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    border-radius: 8px;
+    display: inline-flex;
+    align-items: center;
+    gap: 12px;
+    color: white;
+    font-size: 0.9rem;
+}
+
+.download-link {
+    color: #fbbf24;
+    text-decoration: none;
+    font-weight: 600;
+    padding: 4px 12px;
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 4px;
+    transition: all 0.2s ease;
+}
+
+.download-link:hover {
+    background: rgba(255, 255, 255, 0.2);
+    color: #fcd34d;
 }
 
 .main {
