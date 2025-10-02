@@ -1,6 +1,18 @@
-# 🎨 Adobe Template Generator
+# 🎨 Templator - Adobe Template Generator
 
-Une application web moderne pour créer des templates Adobe avec les bonnes dimensions, marges et guides pour tous vos projets créatifs.
+> Générateur professionnel de templates Adobe avec 100+ formats pour réseaux sociaux, impression, web et vidéo.
+
+![Templator](assets/icon.svg)
+
+## 📱 Applications Disponibles
+
+### 🌐 Version Web
+Utilisez directement dans votre navigateur : **[Templator Web App](https://dafreshtouch.github.io/templator)**
+
+### 💻 Application Native macOS
+Téléchargez l'application complète avec installeur :
+- **[Mac Intel - Adobe Template Generator v1.0.0.dmg](../../releases/download/v1.0.0/Adobe%20Template%20Generator-1.0.0.dmg)**
+- **[Mac Apple Silicon - Adobe Template Generator v1.0.0.dmg](../../releases/download/v1.0.0/Adobe%20Template%20Generator-1.0.0-arm64.dmg)**
 
 ## ✨ Fonctionnalités
 
@@ -176,4 +188,7 @@ Ce projet est libre d'utilisation pour vos projets personnels et commerciaux.
 ---
 
 **Créé avec ❤️ pour optimiser votre workflow créatif Adobe**
+<<<<<<< HEAD
+=======
 # templator
+>>>>>>> b45eb4468c870afbe55de3c2cd04fffcd8af2ad9

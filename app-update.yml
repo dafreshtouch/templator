@@ -1,0 +1,4 @@
+provider: github
+owner: davidmeyer
+repo: adobe-template-generator
+updaterCacheDirName: adobe-template-generator-updater
