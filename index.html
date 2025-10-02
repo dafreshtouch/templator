@@ -1,0 +1,225 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Adobe Template Generator</title>
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="container">
+        <header class="header">
+            <h1>Adobe Template Generator</h1>
+            <p>Créez des gabarits avec les bonnes dimensions et marges pour tous vos projets créatifs</p>
+        </header>
+
+        <main class="main">
+            <div class="template-selector">
+                <div class="selector-header">
+                    <h2>Choisissez votre template</h2>
+                    <div class="header-controls">
+                        <button class="theme-toggle" id="themeToggle" title="Mode sombre">🌙</button>
+                        <div class="expand-controls" id="expandControls" style="display: none;">
+                            <button class="expand-btn" id="expandAllBtn">Tout déplier</button>
+                            <button class="expand-btn" id="collapseAllBtn">Tout replier</button>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="search-section">
+                    <div class="search-container">
+                        <svg class="search-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <circle cx="11" cy="11" r="8"></circle>
+                            <path d="m21 21-4.35-4.35"></path>
+                        </svg>
+                        <input type="text" id="searchInput" placeholder="Rechercher un template..." class="search-input">
+                    </div>
+                    <div class="quick-filters">
+                        <button class="filter-btn active" data-filter="all">
+                            <svg class="filter-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <path d="M3 6h18M7 12h10m-7 6h4"></path>
+                            </svg>
+                            Tous
+                        </button>
+                        <button class="filter-btn" data-filter="favorites">
+                            <svg class="filter-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <polygon points="12,2 15.09,8.26 22,9.27 17,14.14 18.18,21.02 12,17.77 5.82,21.02 7,14.14 2,9.27 8.91,8.26"></polygon>
+                            </svg>
+                            Favoris
+                        </button>
+                        <button class="filter-btn" data-filter="recent">
+                            <svg class="filter-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <circle cx="12" cy="12" r="10"></circle>
+                                <polyline points="12,6 12,12 16,14"></polyline>
+                            </svg>
+                            Récents
+                        </button>
+                    </div>
+                </div>
+                
+                <div class="category-tabs">
+                    <button class="tab-btn active" data-category="social">Réseaux Sociaux</button>
+                    <button class="tab-btn" data-category="platforms">Plateformes</button>
+                    <button class="tab-btn" data-category="print">Impression</button>
+                    <button class="tab-btn" data-category="web">Web</button>
+                    <button class="tab-btn" data-category="video">Vidéo</button>
+                    <button class="tab-btn" data-category="custom">
+                        <svg class="tab-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"></path>
+                        </svg>
+                        Custom
+                    </button>
+                </div>
+
+                <div class="templates-grid" id="templatesGrid">
+                    <!-- Templates will be populated by JavaScript -->
+                </div>
+
+                <div class="custom-format-section" id="customFormatSection" style="display: none;">
+                    <h3>Format personnalisé</h3>
+                    <div class="custom-inputs">
+                        <div class="input-group">
+                            <label>Nom :</label>
+                            <input type="text" id="customName" placeholder="Mon format custom">
+                        </div>
+                        <div class="input-row">
+                            <div class="input-group">
+                                <label>Largeur :</label>
+                                <input type="number" id="customWidth" placeholder="1080">
+                            </div>
+                            <div class="input-group">
+                                <label>Hauteur :</label>
+                                <input type="number" id="customHeight" placeholder="1080">
+                            </div>
+                        </div>
+                        <div class="input-group">
+                            <label>Unité :</label>
+                            <select id="customUnit">
+                                <option value="px">Pixels (px)</option>
+                                <option value="mm">Millimètres (mm)</option>
+                                <option value="in">Pouces (in)</option>
+                            </select>
+                        </div>
+                        <button class="create-custom-btn" id="createCustomBtn">Créer le format</button>
+                    </div>
+                </div>
+
+                <div class="batch-selection" id="batchSelection" style="display: none;">
+                    <div class="batch-header">
+                        <span id="selectedCount">0 template(s) sélectionné(s)</span>
+                        <div class="batch-controls">
+                            <button class="batch-btn" id="selectAllBtn">Tout sélectionner</button>
+                            <button class="batch-btn" id="clearSelectionBtn">Désélectionner</button>
+                            <button class="batch-generate-btn" id="batchGenerateBtn">Générer la sélection</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="right-panel">
+                <div class="template-preview" id="templatePreview">
+                    <h3>Aperçu du template</h3>
+                    <div class="preview-container">
+                        <div class="preview-canvas" id="previewCanvas">
+                            <p>Sélectionnez un template pour voir l'aperçu</p>
+                        </div>
+                    </div>
+                    
+                    <div class="template-info" id="templateInfo">
+                        <!-- Template info will be populated by JavaScript -->
+                    </div>
+                </div>
+
+                <div class="generation-options">
+                <h3>Options de génération</h3>
+                
+                <div class="options-grid">
+                    <div class="option-group">
+                        <label for="fileName">Nom du fichier :</label>
+                        <input type="text" id="fileName" placeholder="Nom automatique" />
+                    </div>
+
+                    <div class="option-group">
+                        <label for="fileFormat">Format de fichier :</label>
+                        <select id="fileFormat">
+                            <option value="jpg" selected>JPG</option>
+                            <option value="png">PNG</option>
+                            <option value="psd">PSD (Photoshop)</option>
+                            <option value="ai">AI (Illustrator)</option>
+                            <option value="pdf">PDF</option>
+                        </select>
+                    </div>
+
+                    <div class="option-group">
+                        <label for="resolution">Résolution :</label>
+                        <select id="resolution">
+                            <option value="72">72 DPI (Web)</option>
+                            <option value="150">150 DPI (Qualité moyenne)</option>
+                            <option value="300">300 DPI (Impression)</option>
+                        </select>
+                    </div>
+
+                    <div class="option-group">
+                        <label for="colorMode">Mode couleur :</label>
+                        <select id="colorMode">
+                            <option value="rgb">RGB</option>
+                            <option value="cmyk">CMYK</option>
+                        </select>
+                    </div>
+
+                    <div class="option-group">
+                        <label>
+                            <input type="checkbox" id="includeGuides" checked>
+                            Inclure les guides et marges
+                        </label>
+                    </div>
+
+                    <div class="option-group">
+                        <label>
+                            <input type="checkbox" id="includeBleed" checked>
+                            Inclure les fonds perdus (impression)
+                        </label>
+                    </div>
+                </div>
+
+                <button class="generate-btn" id="generateBtn" disabled>
+                    📁 Générer le template
+                </button>
+
+                <div class="progress-container" id="progressContainer" style="display: none;">
+                    <div class="progress-bar">
+                        <div class="progress-fill" id="progressFill"></div>
+                    </div>
+                    <div class="progress-text" id="progressText">Génération en cours...</div>
+                </div>
+
+                <div class="help-section">
+                    <h4>ℹ️ Formats de gabarits</h4>
+                    <div class="help-grid">
+                        <div class="help-item">
+                            <strong>JPG :</strong> Format léger avec guides visuels (recommandé)
+                        </div>
+                        <div class="help-item">
+                            <strong>PNG :</strong> Format sans perte avec transparence
+                        </div>
+                        <div class="help-item">
+                            <strong>PSD :</strong> Gabarit PNG avec guides pour Photoshop
+                        </div>
+                        <div class="help-item">
+                            <strong>AI :</strong> Gabarit SVG avec guides pour Illustrator
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </main>
+
+        <footer class="footer">
+            <p>© 2024 Adobe Template Generator - Créé pour optimiser votre workflow créatif</p>
+        </footer>
+    </div>
+
+    <script src="templates-data.js"></script>
+    <script src="script.js"></script>
+</body>
+</html>
